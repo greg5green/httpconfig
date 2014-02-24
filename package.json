@@ -1,0 +1,12 @@
+{
+  "name": "httpconfig",
+  "dependencies": {
+    "express": "3.4.8"
+  },
+  "description": "httpconfig jsonp api",
+  "engines": {
+    "node": "0.10.26"
+  },
+  "private": true,
+  "version": "1.0.1"
+}
