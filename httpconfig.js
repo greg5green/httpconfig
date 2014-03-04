@@ -30,7 +30,7 @@ app.get('/api/httpconfig', function(req, res) {
         },
         language: {
             displayName: 'Language',
-            value: req.headers['accept-lanuage']
+            value: req.headers['accept-language']
         },
         connection: {
             displayName: 'Connection',
