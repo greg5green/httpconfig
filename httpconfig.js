@@ -3,11 +3,10 @@ var express = require('express'),
     app = express(),
     port = parseInt(process.env.PORT, 10) || 9000;
 
-app.configure(function() {
-    app.enable('trust proxy');
-    app.enable('jsonp callback');
-});
+app.enable('trust proxy');
+app.enable('jsonp callback');
 
+app.use(express.compress());
 app.use('/static', express.static('static'));
 
 app.get('/', function(req, res) {

@@ -1,7 +1,6 @@
 require(['dojo/request', 'dojo/dom-construct', 'dojo/query', 'dojo/domReady!'], function(request, domConstruct, query) {
-    request.get('/api/httpconfig', {
-        handleAs: 'json'
-    }).then(function(res) {
+
+    function handleRequestSuccess(res) {
         var container = domConstruct.create('table', { className: 'container' }),
             key;
 
@@ -30,6 +29,9 @@ require(['dojo/request', 'dojo/dom-construct', 'dojo/query', 'dojo/domReady!'], 
         //     }, function() {}, { maximumAge: 60000 });
         // }
 
-        domConstruct.place(container, query("header")[0], "after");
-    });
+        domConstruct.place(container, query('header')[0], 'after');
+    }
+
+    request.get('/api/httpconfig', { handleAs: 'json' }).then(handleRequestSuccess);
+
 });
