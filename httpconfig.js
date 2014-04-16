@@ -2,7 +2,7 @@ var express = require('express'),
     dns = require('dns'),
     app = express(),
     path = require('path'),
-    port = parseInt(process.env.PORT, 10) || parseInt(process.env.HTTPCONFIG, 10) || 9000;
+    port = parseInt(process.env.PORT, 10) || parseInt(process.env.HTTPCONFIGPORT, 10) || 9000;
 
 app.enable('trust proxy');
 app.enable('jsonp callback');
