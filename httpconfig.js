@@ -2,7 +2,7 @@ var express = require('express'),
     dns = require('dns'),
     app = express(),
     path = require('path'),
-    port = parseInt(process.env.PORT, 10) || parseInt(process.env.HTTPCONFIGPORT, 10) || 9000;
+    port = parseInt(process.env.HTTPCONFIGPORT, 10) || parseInt(process.env.PORT, 10) || 9000;
 
 app.enable('trust proxy');
 app.enable('jsonp callback');
@@ -11,7 +11,7 @@ app.use(express.compress());
 app.use('/static', express.static(path.join(__dirname, 'static')));
 
 app.get('/', function(req, res) {
-    res.sendfile('static/html/httpconfig.html');
+    res.sendfile(path.join(__dirname, 'static/html/httpconfig.html'));
 });
 
 app.get('/api/httpconfig', function(req, res) {
