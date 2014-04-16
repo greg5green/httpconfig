@@ -1,13 +1,14 @@
 var express = require('express'),
     dns = require('dns'),
     app = express(),
-    port = parseInt(process.env.PORT, 10) || 9000;
+    path = require('path'),
+    port = parseInt(process.env.PORT, 10) || parseInt(process.env.HTTPCONFIG, 10) || 9000;
 
 app.enable('trust proxy');
 app.enable('jsonp callback');
 
 app.use(express.compress());
-app.use('/static', express.static('static'));
+app.use('/static', express.static(path.join(__dirname, 'static')));
 
 app.get('/', function(req, res) {
     res.sendfile('static/html/httpconfig.html');
