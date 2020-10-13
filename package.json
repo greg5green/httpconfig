@@ -1,12 +1,29 @@
 {
   "name": "httpconfig",
-  "dependencies": {
-    "express": "3.4.8"
-  },
-  "description": "httpconfig jsonp api",
+  "version": "1.0.3",
+  "description": "ifconfig, but for the web, sort of",
+  "main": "httpconfig.js",
   "engines": {
-    "node": "0.10.26"
+    "node": "14.13.1"
+  },
+  "dependencies": {
+    "compression": "^1.7.4",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node httpconfig.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "private": true,
-  "version": "1.0.2"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/greg5green/httpconfig.git"
+  },
+  "author": "greggreen@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/greg5green/httpconfig/issues"
+  },
+  "homepage": "https://github.com/greg5green/httpconfig#readme"
 }
