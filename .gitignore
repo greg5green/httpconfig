@@ -15,4 +15,5 @@ build
 .grunt
 
 node_modules
+.env
 static/css/

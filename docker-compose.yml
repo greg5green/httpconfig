@@ -4,3 +4,12 @@ services:
     ports:
       - "9000:9000"
     restart: unless-stopped
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    command: tunnel --no-autoupdate run
+    environment:
+      - TUNNEL_TOKEN=${CLOUDFLARE_TUNNEL_TOKEN}
+    depends_on:
+      - httpconfig
+    restart: unless-stopped
