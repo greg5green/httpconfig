@@ -10,8 +10,12 @@
     "compression": "^1.8.1",
     "express": "^4.22.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "normalize.css": "^8.0.1",
+    "sass": "^1.98.0"
+  },
   "scripts": {
+    "build": "sass static/scss/httpconfig.scss static/css/httpconfig.css --no-source-map --load-path=node_modules",
     "start": "node httpconfig.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
