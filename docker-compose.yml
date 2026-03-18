@@ -1,20 +1,11 @@
 services:
   httpconfig:
     build: .
+    ports:
+      - 9000:9000
     restart: unless-stopped
     read_only: true
     cap_drop:
       - ALL
-    security_opt:
-      - no-new-privileges:true
-
-  cloudflared:
-    image: cloudflare/cloudflared:2026.3.0
-    command: tunnel --no-autoupdate run
-    environment:
-      - TUNNEL_TOKEN=${CLOUDFLARE_TUNNEL_TOKEN}
-    depends_on:
-      - httpconfig
-    restart: unless-stopped
     security_opt:
       - no-new-privileges:true
