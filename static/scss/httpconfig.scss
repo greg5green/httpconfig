@@ -32,6 +32,7 @@ a {
 h1 {
     color: #999;
     @include font-size(3.2, 1.5);
+    margin: 0;
     padding-top: 24px;
 }
 
@@ -53,6 +54,7 @@ hr {
 .container {
     border: 1px solid #ddd;
     border-collapse: separate;
+    border-spacing: 0;
     border-radius: 4px;
     margin: 0 auto 20px;
     width: 90%;
