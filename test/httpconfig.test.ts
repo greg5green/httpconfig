@@ -1,6 +1,6 @@
-const request = require('supertest');
-const { expect } = require('chai');
-const app = require('../httpconfig');
+import request from 'supertest';
+import { expect } from 'chai';
+import app from '../httpconfig';
 
 describe('GET /', function () {
   it('returns 200 with HTML', async function () {

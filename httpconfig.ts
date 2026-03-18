@@ -1,22 +1,38 @@
-var compression = require('compression');
-var dns = require('dns');
-var express = require('express');
-var path = require('path');
+import compression from 'compression';
+import dns from 'dns';
+import express, { Request, Response } from 'express';
+import path from 'path';
 
-var app = express();
-var port = parseInt(process.env.PORT, 10) || 9000;
+interface RequestField {
+  displayName: string;
+  value: string | string[] | undefined;
+}
+
+interface RemoteRequest {
+  ip: RequestField;
+  hostname: RequestField;
+  ua: RequestField;
+  language: RequestField;
+  connection: RequestField;
+  encoding: RequestField;
+  mimeType: RequestField;
+  charset: RequestField;
+}
+
+const app = express();
+const port = parseInt(process.env.PORT ?? '9000', 10);
 
 app.set('trust proxy', true);
 
 app.use(compression());
 app.use('/static', express.static(path.join(__dirname, 'static')));
 
-app.get('/', function (req, res) {
+app.get('/', (req: Request, res: Response) => {
   res.sendFile(path.join(__dirname, 'static/html/httpconfig.html'));
 });
 
-app.get('/api/httpconfig', function (req, res) {
-  var remoteReq = {
+app.get('/api/httpconfig', (req: Request, res: Response) => {
+  const remoteReq: RemoteRequest = {
     ip: {
       displayName: 'IP Address',
       value: req.ip,
@@ -51,7 +67,7 @@ app.get('/api/httpconfig', function (req, res) {
     },
   };
 
-  dns.reverse(req.ip, function (err, domains) {
+  dns.reverse(req.ip ?? '', (err, domains) => {
     if (domains) {
       remoteReq.hostname.value = domains[0];
     }
@@ -60,7 +76,7 @@ app.get('/api/httpconfig', function (req, res) {
   });
 });
 
-app.use(function (req, res, next) {
+app.use((req: Request, res: Response) => {
   res.status(404).send("404: Sorry, we've had an error.");
 });
 
@@ -69,4 +85,4 @@ if (require.main === module) {
   console.log('Listening on port ' + port);
 }
 
-module.exports = app;
+export default app;
