@@ -11,13 +11,16 @@
     "express": "^4.22.1"
   },
   "devDependencies": {
+    "chai": "^6.2.2",
+    "mocha": "^11.7.5",
     "normalize.css": "^8.0.1",
-    "sass": "^1.98.0"
+    "sass": "^1.98.0",
+    "supertest": "^7.2.2"
   },
   "scripts": {
     "build": "sass static/scss/httpconfig.scss static/css/httpconfig.css --no-source-map --load-path=node_modules",
     "start": "node httpconfig.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "private": true,
   "repository": {
