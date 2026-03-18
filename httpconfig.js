@@ -6,7 +6,7 @@ var path = require('path');
 var app = express();
 var port = parseInt(process.env.PORT, 10) || 9000;
 
-app.set('trust proxy', 1);
+app.set('trust proxy', true);
 
 app.use(compression());
 app.use('/static', express.static(path.join(__dirname, 'static')));
