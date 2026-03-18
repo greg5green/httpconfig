@@ -12,15 +12,20 @@
   },
   "devDependencies": {
     "chai": "^6.2.2",
+    "husky": "^9.1.7",
     "mocha": "^11.7.5",
     "normalize.css": "^8.0.1",
+    "prettier": "^3.8.1",
     "sass": "^1.98.0",
     "supertest": "^7.2.2"
   },
   "scripts": {
     "build": "sass static/scss/httpconfig.scss static/css/httpconfig.css --no-source-map --load-path=node_modules",
+    "format": "prettier --write \"**/*.{js,scss,html}\"",
+    "format:check": "prettier --check \"**/*.{js,scss,html}\"",
     "start": "node httpconfig.js",
-    "test": "mocha"
+    "test": "mocha",
+    "prepare": "husky"
   },
   "private": true,
   "repository": {

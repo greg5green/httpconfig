@@ -21,7 +21,16 @@ describe('GET /api/httpconfig', function () {
 
   it('response contains all expected fields', async function () {
     const res = await request(app).get('/api/httpconfig');
-    const fields = ['ip', 'hostname', 'ua', 'language', 'connection', 'encoding', 'mimeType', 'charset'];
+    const fields = [
+      'ip',
+      'hostname',
+      'ua',
+      'language',
+      'connection',
+      'encoding',
+      'mimeType',
+      'charset',
+    ];
 
     for (const field of fields) {
       expect(res.body).to.have.property(field);
