@@ -1,0 +1,11 @@
+services:
+  httpconfig:
+    build: .
+    ports:
+      - 9000:9000
+    restart: unless-stopped
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
