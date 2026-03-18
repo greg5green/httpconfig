@@ -64,5 +64,9 @@ app.use(function (req, res, next) {
   res.status(404).send("404: Sorry, we've had an error.");
 });
 
-app.listen(port);
-console.log('Listening on port ' + port);
+if (require.main === module) {
+  app.listen(port);
+  console.log('Listening on port ' + port);
+}
+
+module.exports = app;
