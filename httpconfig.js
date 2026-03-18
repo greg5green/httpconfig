@@ -6,8 +6,7 @@ var path = require('path');
 var app = express();
 var port = parseInt(process.env.PORT, 10) || 9000;
 
-app.enable('trust proxy');
-app.enable('jsonp callback');
+app.set('trust proxy', 1);
 
 app.use(compression());
 app.use('/static', express.static(path.join(__dirname, 'static')));
@@ -57,12 +56,12 @@ app.get('/api/httpconfig', function (req, res) {
       remoteReq.hostname.value = domains[0];
     }
 
-    res.jsonp(remoteReq);
+    res.json(remoteReq);
   });
 });
 
 app.use(function (req, res, next) {
-  res.send(404, "404: Sorry, we've had an error.");
+  res.status(404).send("404: Sorry, we've had an error.");
 });
 
 app.listen(port);
