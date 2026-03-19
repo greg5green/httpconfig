@@ -33,7 +33,10 @@
     "typescript": "^5.0.0"
   },
   "scripts": {
-    "build": "sass static/scss/httpconfig.scss static/css/httpconfig.css --no-source-map --load-path=node_modules && tsc",
+    "build": "npm run build:css && npm run build:server && npm run build:client",
+    "build:css": "sass static/scss/httpconfig.scss static/css/httpconfig.css --no-source-map --load-path=node_modules",
+    "build:server": "tsc",
+    "build:client": "tsc --project tsconfig.frontend.json",
     "format": "prettier --write \"**/*.{ts,js,scss,html}\"",
     "format:check": "prettier --check \"**/*.{ts,js,scss,html}\"",
     "lint": "eslint \"**/*.ts\"",
