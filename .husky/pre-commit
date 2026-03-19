@@ -1,1 +1,1 @@
-prettier --check "**/*.{js,scss,html}"
+prettier --check "**/*.{ts,js,scss,html}"
