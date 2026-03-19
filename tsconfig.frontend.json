@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ES2022",
+    "outDir": "static/js",
+    "rootDir": "static/ts",
+    "strict": true,
+    "skipLibCheck": true,
+    "types": [],
+    "lib": ["ES2022", "DOM"]
+  },
+  "include": ["static/ts/**/*.ts"]
+}

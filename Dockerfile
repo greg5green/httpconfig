@@ -6,7 +6,8 @@ COPY package*.json ./
 RUN npm install
 
 COPY static/scss/ ./static/scss/
-COPY httpconfig.ts tsconfig.json ./
+COPY static/ts/ ./static/ts/
+COPY httpconfig.ts tsconfig.json tsconfig.frontend.json ./
 RUN npm run build
 
 FROM node:24.14.0-alpine
@@ -18,7 +19,7 @@ RUN npm install --omit=dev
 
 COPY --from=builder /app/dist/httpconfig.js ./httpconfig.js
 COPY static/html/ ./static/html/
-COPY static/js/ ./static/js/
+COPY --from=builder /app/static/js/ ./static/js/
 COPY --from=builder /app/static/css/ ./static/css/
 
 ENV PORT=9000
