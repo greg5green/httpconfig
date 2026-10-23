@@ -4,7 +4,7 @@
   "description": "ifconfig, but for the web, sort of",
   "main": "dist/httpconfig.js",
   "engines": {
-    "node": "24.14.0"
+    "node": "24.22.1"
   },
   "dependencies": {
     "compression": "^1.8.1",
