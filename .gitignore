@@ -19,3 +19,4 @@ node_modules
 static/css/
 static/js/
 dist/
+mise.local.toml
